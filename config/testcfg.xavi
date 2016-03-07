@@ -1,0 +1,4 @@
+servers/hello#{"Name":"hello","Address":"localhost","Port":8080,"PingURI":"/hello","HealthCheck":"http-get", "HealthCheckInterval":3000,"HealthCheckTimeout":10000}
+backends/demo-backend#{"Name":"demo-backend","ServerNames":["hello"]}
+routes/demo-route#{"Name":"demo-route","URIRoot":"/hello/","Backends":["demo-backend"],"Plugins":["Panic","Recovery"],"MsgProps":""}
+listeners/demo-listener#{"Name":"demo-listener","RouteNames":["demo-route"]}
